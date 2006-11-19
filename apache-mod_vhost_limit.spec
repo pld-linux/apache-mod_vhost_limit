@@ -12,10 +12,7 @@ URL:		http://apache.ivn.cl/#vhostlimit
 BuildRequires:	%{apxs}
 BuildRequires:	apache-devel >= 2.0.0
 BuildRequires:	rpmbuild(macros) >= 1.268
-BuildRequires:	sed >= 4.0
 Requires:	apache(modules-api) = %apache_modules_api
-Requires:	crondaemon
-Requires:	procps
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_pkglibdir	%(%{apxs} -q LIBEXECDIR 2>/dev/null)
@@ -34,8 +31,8 @@ Restrict the number of simultaneous connections per vhost.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_pkglibdir}
 
-libtool install mod_vhost_limit.la $RPM_BUILD_ROOT%{_pkglibdir}/
-rm -rf $RPM_BUILD_ROOT%{_pkglibdir}/*.{l,}a
+libtool install mod_vhost_limit.la $RPM_BUILD_ROOT%{_pkglibdir}
+rm -f $RPM_BUILD_ROOT%{_pkglibdir}/*.{l,}a
 
 %clean
 rm -rf $RPM_BUILD_ROOT
