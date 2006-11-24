@@ -1,6 +1,7 @@
 %define		mod_name	vhost_limit
 %define 	apxs		/usr/sbin/apxs
 Summary:	Apache module: clients restriction per vhost
+Summary(pl):	Modu³ Apache'a - ograniczanie klientów dla vhosta
 Name:		apache-mod_%{mod_name}
 Version:	0.1
 Release:	1
@@ -20,6 +21,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Restrict the number of simultaneous connections per vhost.
+
+%description -l pl
+Modu³ ograniczaj±cy liczbê jednoczesnych po³±czeñ dla vhosta.
 
 %prep
 %setup -q -n mod_vhost_limit-%{version}
