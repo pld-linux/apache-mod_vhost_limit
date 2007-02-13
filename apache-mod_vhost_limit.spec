@@ -1,7 +1,7 @@
 %define		mod_name	vhost_limit
 %define 	apxs		/usr/sbin/apxs
 Summary:	Apache module: clients restriction per vhost
-Summary(pl.UTF-8):   Moduł Apache'a - ograniczanie klientów dla vhosta
+Summary(pl.UTF-8):	Moduł Apache'a - ograniczanie klientów dla vhosta
 Name:		apache-mod_%{mod_name}
 Version:	0.1
 Release:	1
