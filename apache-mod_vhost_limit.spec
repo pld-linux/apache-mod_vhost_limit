@@ -3,12 +3,12 @@
 Summary:	Apache module: clients restriction per vhost
 Summary(pl.UTF-8):	Moduł Apache'a - ograniczanie klientów dla vhosta
 Name:		apache-mod_%{mod_name}
-Version:	0.1
+Version:	0.2
 Release:	1
 License:	Apache
 Group:		Networking/Daemons
 Source0:	http://apache.ivn.cl/files/source/mod_vhost_limit-%{version}.tgz
-# Source0-md5:	58e86dfe8f3813f693652ee6740c1c1b
+# Source0-md5:	7379520e078d26503f8323e7f36302fb
 URL:		http://apache.ivn.cl/#vhostlimit
 BuildRequires:	%{apxs}
 BuildRequires:	apache-devel >= 2.0.0
