@@ -10,7 +10,7 @@ Group:		Networking/Daemons
 Source0:	http://apache.ivn.cl/files/source/mod_vhost_limit-%{version}.tgz
 # Source0-md5:	7379520e078d26503f8323e7f36302fb
 URL:		http://apache.ivn.cl/#vhostlimit
-BuildRequires:	%{apxs}
+BuildRequires:	apache-apxs >= 2.0
 BuildRequires:	apache-devel >= 2.0.0
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	apache(modules-api) = %apache_modules_api
