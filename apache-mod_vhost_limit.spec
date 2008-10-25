@@ -6,7 +6,7 @@ Name:		apache-mod_%{mod_name}
 Version:	0.2
 Release:	1
 License:	Apache
-Group:		Networking/Daemons
+Group:		Networking/Daemons/HTTP
 Source0:	http://apache.ivn.cl/files/source/mod_vhost_limit-%{version}.tgz
 # Source0-md5:	7379520e078d26503f8323e7f36302fb
 URL:		http://apache.ivn.cl/#vhostlimit
