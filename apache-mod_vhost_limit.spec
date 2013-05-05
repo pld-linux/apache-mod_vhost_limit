@@ -1,14 +1,15 @@
 %define		mod_name	vhost_limit
-%define 	apxs		/usr/sbin/apxs
+%define		apxs		/usr/sbin/apxs
 Summary:	Apache module: clients restriction per vhost
 Summary(pl.UTF-8):	Moduł Apache'a - ograniczanie klientów dla vhosta
 Name:		apache-mod_%{mod_name}
 Version:	0.2
-Release:	1
+Release:	2
 License:	Apache
 Group:		Networking/Daemons/HTTP
 Source0:	http://apache.ivn.cl/files/source/mod_vhost_limit-%{version}.tgz
 # Source0-md5:	7379520e078d26503f8323e7f36302fb
+Patch0:		mod_vhost_limit-apache24.patch
 URL:		http://apache.ivn.cl/#vhostlimit
 BuildRequires:	%{apxs}
 BuildRequires:	apache-devel >= 2.0.0
@@ -27,6 +28,7 @@ Moduł ograniczający liczbę jednoczesnych połączeń dla vhosta.
 
 %prep
 %setup -q -n mod_vhost_limit-%{version}
+%patch0 -p1
 
 %build
 %{apxs} -c mod_vhost_limit.c
@@ -35,7 +37,8 @@ Moduł ograniczający liczbę jednoczesnych połączeń dla vhosta.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_pkglibdir}
 
-libtool install mod_vhost_limit.la $RPM_BUILD_ROOT%{_pkglibdir}
+libtool --mode=install install mod_vhost_limit.la $RPM_BUILD_ROOT%{_pkglibdir}
+libtool --finish $RPM_BUILD_ROOT%{_pkglibdir}
 rm -f $RPM_BUILD_ROOT%{_pkglibdir}/*.{l,}a
 
 %clean

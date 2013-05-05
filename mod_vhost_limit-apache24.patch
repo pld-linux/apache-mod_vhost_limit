@@ -1,0 +1,31 @@
+--- mod_vhost_limit-0.2/mod_vhost_limit.c.orig	2007-04-06 19:52:03.000000000 +0200
++++ mod_vhost_limit-0.2/mod_vhost_limit.c	2013-05-06 00:18:00.883162004 +0200
+@@ -127,6 +127,7 @@
+     char cut_req_host[31] = "";
+     const char *req_host;
+     const char *vhost;
++    ap_generation_t mpm_generation;
+     
+     conf = (vhost_limit_conf *) ap_get_module_config(r->server->module_config,&vhost_limit_module);
+     
+@@ -144,17 +145,17 @@
+     ********************************************/
+ 
+     req_host = ap_get_server_name(r);
+-    
++    ap_mpm_query(AP_MPMQ_GENERATION, &mpm_generation);
+     
+     for (i = 0; i < server_limit; ++i) 
+     {
+         for (j = 0; j < thread_limit; ++j) 
+         {
+             ps_record = ap_get_scoreboard_process(i);
+-            ws_record = ap_get_scoreboard_worker(i, j);
++            ws_record = ap_get_scoreboard_worker_from_indexes(i, j);
+             vhost = ws_record->vhost;
+ 
+-            if (ps_record->generation != ap_my_generation)
++            if (ps_record->generation != mpm_generation)
+                 vhost = NULL;
+             if (!vhost)
+                 continue;
