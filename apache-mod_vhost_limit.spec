@@ -28,7 +28,7 @@ Moduł ograniczający liczbę jednoczesnych połączeń dla vhosta.
 
 %prep
 %setup -q -n mod_vhost_limit-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{apxs} -c mod_vhost_limit.c
